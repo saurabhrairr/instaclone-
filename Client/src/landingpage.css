@@ -1,0 +1,23 @@
+.main
+{
+       display: flex;
+       justify-content:center;
+       padding-top: 10%;
+}
+.second
+{
+       display: flex;
+       align-items: center;
+}
+.second ul p
+{
+       color:blueviolet;
+       font-weight: bolder;
+}
+.second button
+{
+       margin-left: 20px;
+       border-radius:30px;
+       color:blueviolet;
+       border:1px solid blueviolet;
+}

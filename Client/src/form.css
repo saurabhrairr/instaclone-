@@ -1,0 +1,45 @@
+
+.secondcontainer
+{
+    width:400px;
+    height:150px;
+    border: 2px solid black;
+    margin-left:500px;
+    margin-top: 50px;
+}
+.fileupload
+{
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+}
+   
+.details {
+  
+    margin-left: 25px;
+    margin-top: 10px;
+    display: flex;
+    justify-content: space-around;
+}
+.descripation
+{
+    margin-left: 30px;
+    margin-top: 10px;
+    width: 40px;
+
+}
+#description
+{
+    width: 350px;
+}
+.submit
+{
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+}
+#lobo
+{
+       width:5%;
+}
+
