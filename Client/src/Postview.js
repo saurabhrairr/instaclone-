@@ -13,7 +13,7 @@ const Postview =()=> {
     const [posts,setPosts] = useState([]);
     useEffect(()=>{
         axios({
-            url: "https://saurabhrai-11.herokuapp.com/post",
+            url: "http://localhost:3082/post",
             method: "GET",
         }).then((itemdata)=>{
             setPosts(itemdata.data.item.reverse());

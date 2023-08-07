@@ -1,4 +1,4 @@
-
+/* 
 .secondcontainer
 {
     width:400px;
@@ -42,4 +42,89 @@
 {
        width:5%;
 }
+ */
 
+
+
+
+
+ /* Add this CSS at the end of your existing styles */
+
+.container {
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 10px;
+    background-color: blue;
+  }
+  
+  .nav {
+    display: flex;
+    justify-content: space-between;
+    margin-right: 20px;
+    margin-left: 20px;
+  }
+  
+  #lobo {
+    width: 30px;
+  }
+  
+  .secondcontainer {
+    max-width: 100%;
+    border: 2px solid black;
+    margin: 20px auto;
+    padding: 20px;
+  }
+  
+  .fileupload {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+  }
+  
+  .details {
+    margin-top: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  .details input {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+  
+  .descripation {
+    margin-top: 10px;
+  }
+  
+  #description {
+    width: 100%;
+  }
+  
+  .submit {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+  }
+  
+  /* Media queries for smaller screens */
+  @media (max-width: 768px) {
+    #lobo {
+      width: 20px;
+    }
+  
+    .secondcontainer {
+      max-width: 100%;
+      margin: 10px auto;
+      padding: 10px;
+    }
+  
+    .details {
+      flex-direction: column;
+    }
+  
+    .details input {
+      width: 100%;
+    }
+  }
+  

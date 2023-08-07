@@ -9,7 +9,7 @@ const Landingpage =()=> {
        }
        return(
 <>
-<div className="main">
+  <div className="main">
        <img src={icon} alt="10xteamenterimage"/>
        <div className="second">
               <ul>

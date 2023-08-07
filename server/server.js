@@ -23,17 +23,13 @@ else
 
 })
 
-moongose.connect("mongodb+srv://saurabh:maihuyaar@instaclone.f4zwck4.mongodb.net/instaclonepro?retryWrites=true&w=majority",(err)=>
-{
-       if(!err)
-       {
-              console.log("connect to db");
-       }else
-       {
-              console.log(err);
-       }
-       
-})
+moongose.connect("mongodb://localhost/imageuploaddata", (err) => {
+  if (!err) {
+    console.log("connected to Database");
+  } else {
+    console.log(err);
+  }
+});
 app.post("/post",(req,res)=>{
   
        postmodel.create({
