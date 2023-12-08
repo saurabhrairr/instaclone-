@@ -1,0 +1,77 @@
+
+.main {
+       display: flex;
+       justify-content: center;
+       padding-top: 10%;
+     }
+     
+     img {
+       max-width: 100%;
+       height: auto;
+     }
+     
+     .second {
+       display: flex;
+       justify-content: center;
+       align-items: center;
+       flex-direction: column; /* Center the content vertically */
+       text-align: center; /* Center the text */
+     }
+     
+     .second ul p {
+       color: blueviolet;
+       font-weight: bolder;
+       font-size: 24px; /* Increase the font size for larger screens */
+     }
+     
+     .second button {
+       margin-top: 20px; /* Add some space between the paragraph and the button */
+       padding: 10px 30px;
+       border-radius: 30px;
+       color: blueviolet;
+       border: 1px solid blueviolet;
+       font-size: 18px; /* Increase the button font size for larger screens */
+     }
+     
+     /* Responsive styles */
+     /* For screen sizes up to 768px (e.g., smartphones) */
+     @media (max-width: 768px) {
+       .main {
+         padding-top: 20%;
+       }
+     
+       .second ul p {
+         font-size: 20px;
+       }
+     
+       .second button {
+         font-size: 16px;
+       }
+     }
+     
+     /* For screen sizes between 768px and 1024px (e.g., tablets) */
+     @media (min-width: 768px) and (max-width: 1024px) {
+       .main {
+         padding-top: 15%;
+       }
+     
+       .second ul p {
+         font-size: 22px;
+       }
+     
+       .second button {
+         font-size: 18px;
+       }
+     }
+     
+     /* For screen sizes larger than 1024px (e.g., desktops) */
+     @media (min-width: 1024px) {
+       .second ul p {
+         font-size: 24px;
+       }
+     
+       .second button {
+         font-size: 20px;
+       }
+     }
+     
