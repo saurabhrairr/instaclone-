@@ -234,7 +234,7 @@ app.post("/addComment/:postId", authenticateToken, async (req, res) => {
 
 
 
-app.post("/likePost/:postId", async (req, res) => {
+app.post("/likePost/:postId",authenticateToken, async (req, res) => {
   try {
     const postId = req.params.postId;
     const { username } = req.user; // Get the currently logged-in user's name

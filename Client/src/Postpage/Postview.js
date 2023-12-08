@@ -121,6 +121,46 @@ const Postview = () => {
       console.error('Adding comment failed', error);
     }
   };
+
+
+
+
+
+
+
+
+  const handleLikePost = async (postId) => {
+    try {
+      const token = localStorage.getItem('jwtToken');
+      if (!token) {
+        console.error("User unauthorized. Please log in.");
+        return;
+      }
+
+      const response = await axios.post(
+        `http://localhost:3082/likePost/${postId}`,
+        {},
+        {
+          headers: {
+            Authorization: token,
+          },
+        }
+      );
+
+      // Update the posts with the new like information
+      const updatedPosts = posts.map((post) =>
+        post._id === postId ? response.data : post
+      );
+
+      setPosts(updatedPosts);
+    } catch (error) {
+      console.error('Liking post failed', error);
+    }
+  };
+
+
+
+
   return (
     <div className="container1">
       <div></div>
@@ -163,6 +203,7 @@ const Postview = () => {
                   src="https://icon-library.com/images/instagram-heart-icon/instagram-heart-icon-17.jpg"
                   alt=" currently no detail"
                   className="heart-img"
+                  onClick={() => handleLikePost(item._id)}
                 />
               </span>
               <span>
@@ -174,7 +215,7 @@ const Postview = () => {
                 />
               </span>
               <span className="date">{cdate}</span>
-              <p className="likes">100 likes</p>
+              <p className="likes">{item.likes.length} likes</p>
             </div>
             <footer className="footer">
               <p> {item.descripation}</p>
