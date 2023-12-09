@@ -22,7 +22,7 @@ const Landingpage = () => {
         <img src={icon} alt="10xteamenterimage" />
         <div className="second">
           <ul>
-            <p>10x Team 04</p>
+            <p>Welcome !</p>
             {!entered ? (
               <>
                 <input
@@ -30,6 +30,13 @@ const Landingpage = () => {
                   placeholder="Enter your name"
                   value={userName}
                   onChange={(e) => setUserName(e.target.value)}
+                  style={{
+                    padding: '10px',
+                    fontSize: '16px',
+                    borderRadius: '5px',
+                    border: '1px solid #ccc',
+                    marginRight: '10px',
+                  }}
                 />
                 <button onClick={handleRoute}>Enter</button>
               </>

@@ -15,6 +15,11 @@
   pointer-events: none;
 }
 
+
+.heart-img.liked {
+  filter: brightness(0) saturate(100%) invert(53%) sepia(8%) saturate(4887%) hue-rotate(348deg) brightness(92%) contrast(87%);
+}
+
 .edit-modal {
   position: fixed;
   top: 50%;

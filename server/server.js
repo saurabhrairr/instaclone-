@@ -233,8 +233,7 @@ app.post("/addComment/:postId", authenticateToken, async (req, res) => {
 
 
 
-
-app.post("/likePost/:postId",authenticateToken, async (req, res) => {
+app.post("/likePost/:postId", authenticateToken, async (req, res) => {
   try {
     const postId = req.params.postId;
     const { username } = req.user; // Get the currently logged-in user's name
@@ -242,6 +241,11 @@ app.post("/likePost/:postId",authenticateToken, async (req, res) => {
     const post = await postmodel.findById(postId);
     if (!post) {
       return res.status(404).json({ error: "Post not found" });
+    }
+
+    // Check if the user has already liked the post
+    if (post.likes.includes(username)) {
+      return res.status(400).json({ error: "User has already liked this post" });
     }
 
     // Add like to the post with the logged-in user's name
@@ -253,5 +257,4 @@ app.post("/likePost/:postId",authenticateToken, async (req, res) => {
     res.status(500).json({ error: "Internal Server Error" });
   }
 });
-
 
