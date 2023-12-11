@@ -39,7 +39,7 @@ mongoose.connect("mongodb://localhost/instcomment", (err) => {
 app.post("/signup", async (req, res) => {
   try {
     console.log("Received signup request");
-    const { username, password } = req.body;
+    const { email, password } = req.body;
 
 
     // Hash the password
@@ -47,7 +47,7 @@ app.post("/signup", async (req, res) => {
 
     // Create a new user
     const newUser = {
-      username,
+      email,
       password: hashedPassword,
     };
 
@@ -64,10 +64,10 @@ app.post("/signup", async (req, res) => {
 
 app.post("/login", async (req, res) => {
   try {
-    const { username, password } = req.body;
+    const { email, password } = req.body;
 
-    // Find the user by username
-    const user = await UserModel.findOne({ username });
+    // Find the user by email
+    const user = await UserModel.findOne({ email });
 
     if (!user) {
       return res.status(404).json({ error: "User not found" });
@@ -82,7 +82,7 @@ app.post("/login", async (req, res) => {
 
     // Create a JWT token using the constant secret key
     const token = jwt.sign(
-      { userId: user._id, username: user.username },
+      { userId: user._id, email: user.email },
       secretKey,
       {
         expiresIn: "1h", // Token expiration time
@@ -212,7 +212,7 @@ app.post("/addComment/:postId", authenticateToken, async (req, res) => {
   try {
     const postId = req.params.postId;
     const { text } = req.body;
-    const { username } = req.user; // Get the currently logged-in user's name
+    const { email } = req.user; // Get the currently logged-in user's name
 
     const post = await postmodel.findById(postId);
     if (!post) {
@@ -220,7 +220,7 @@ app.post("/addComment/:postId", authenticateToken, async (req, res) => {
     }
 
     // Add new comment to the post with the logged-in user's name
-    post.comments.push({ text, username });
+    post.comments.push({ text, email });
     await post.save();
 
     res.json(post);
@@ -236,7 +236,7 @@ app.post("/addComment/:postId", authenticateToken, async (req, res) => {
 app.post("/likePost/:postId", authenticateToken, async (req, res) => {
   try {
     const postId = req.params.postId;
-    const { username } = req.user; // Get the currently logged-in user's name
+    const { email } = req.user; // Get the currently logged-in user's name
 
     const post = await postmodel.findById(postId);
     if (!post) {
@@ -244,12 +244,12 @@ app.post("/likePost/:postId", authenticateToken, async (req, res) => {
     }
 
     // Check if the user has already liked the post
-    if (post.likes.includes(username)) {
+    if (post.likes.includes(email)) {
       return res.status(400).json({ error: "User has already liked this post" });
     }
 
     // Add like to the post with the logged-in user's name
-    post.likes.push(username);
+    post.likes.push(email);
     await post.save();
 
     res.json(post);

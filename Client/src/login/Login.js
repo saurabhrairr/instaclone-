@@ -10,14 +10,14 @@ import 'bootstrap/dist/css/bootstrap.min.css'; // Bootstrap styles
 
 const Login = ({ setToken }) => {
   const navigate = useNavigate();
-  const [username, setUsername] = useState('');
+  const [email, setemail] = useState('');
   const [password, setPassword] = useState('');
 
 
   const handleLogin = async () => {
     try {
       const response = await axios.post('http://localhost:3082/login', {
-        username,
+        email,
         password,
       });
 
@@ -54,15 +54,15 @@ const Login = ({ setToken }) => {
       <div className="form">
         <h2 className="mb-4">Login</h2>
         <div className="mb-3">
-          <label htmlFor="username" className="form-label">
-            Username:
+          <label htmlFor="email" className="form-label">
+            email:
           </label>
           <input
             type="text"
             className="form-control"
-            id="username"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
+            id="email"
+            value={email}
+            onChange={(e) => setemail(e.target.value)}
           />
         </div>
         <div className="mb-3">

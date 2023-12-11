@@ -266,8 +266,8 @@ const Postview = () => {
                   {(item.comments || []).map((comment, index) => (
                     <div key={index} className="single-comment">
                       <p className="comment-text">
-                        <span className="comment-username">
-                          {comment.username}
+                        <span className="comment-email">
+                          {comment.email.split('@')[0]}{' '}
                         </span>
                         {comment.text}
                       </p>

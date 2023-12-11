@@ -9,14 +9,24 @@ import 'bootstrap/dist/css/bootstrap.min.css'; // Bootstrap styles
 
 const Signup = () => {
   const navigate = useNavigate();
-  const [username, setUsername] = useState('');
+  const [email, setemail] = useState('');
   const [password, setPassword] = useState('');
 
   const handleSignup = async () => {
+
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+      Swal.fire({
+        icon: 'error',
+        title: 'Invalid Email',
+        text: 'Please enter a valid email address.',
+      });
+      return;
+    }
     try {
       // Make a request to your signup endpoint
       const response = await axios.post('http://localhost:3082/signup', {
-        username,
+        email,
         password,
       });
 
@@ -46,15 +56,15 @@ const Signup = () => {
       <div className="form">
         <h2 className="mb-4">Signup</h2>
         <div className="mb-3">
-          <label htmlFor="username" className="form-label">
-            Username:
+          <label htmlFor="email" className="form-label">
+            email:
           </label>
           <input
-            type="text"
+            type="email"
             className="form-control"
-            id="username"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
+            id="email"
+            value={email}
+            onChange={(e) => setemail(e.target.value)}
           />
         </div>
         <div className="mb-3">
