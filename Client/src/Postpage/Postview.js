@@ -192,14 +192,22 @@ const Postview = () => {
           return;
         })}
       </div>
-      <header>
-        <div className="nav">
-          <img src={insta} alt="logoimage" />
-          <img id="lobo" onClick={formpage} src={camera} alt="camera-image" />
-          <button onClick={handleLogout}>Logout</button>
-        </div>
-      </header>
-      <hr />
+      <header className="header-container">
+  <div className="nav">
+    <img className="logo" src={insta} alt="logoimage" />
+    <img
+      id="lobo"
+      className="camera-icon"
+      onClick={formpage}
+      src={camera}
+      alt="camera-image"
+    />
+    <button className="logout-button" onClick={handleLogout}>
+      Logout
+    </button>
+  </div>
+</header>
+
 
       {posts.map((item, i) => {
         return (

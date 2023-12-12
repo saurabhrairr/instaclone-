@@ -22,7 +22,6 @@ const App = () => {
 
   
   return (
-    
     <Router>
       <div>
         <Routes>

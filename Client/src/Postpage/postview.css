@@ -6,10 +6,10 @@
    margin-right: 30px;
    margin-left: 30px;
 }
-#lobo
+/* #lobo
 {
-       width:5%;
-}
+       width:40px;
+} */
 .modal-open {
   filter: blur(4px);
   pointer-events: none;
@@ -127,6 +127,44 @@
   cursor: pointer;
 }
 
+
+
+
+
+.header-container {
+  background-color: #fff; /* Set your desired background color */
+  padding: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Add a subtle shadow */
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo {
+  width: 90px; /* Adjust the width of the logo */
+}
+
+.camera-icon {
+  cursor: pointer;
+}
+
+.logout-button {
+  background-color: #e74c3c; /* Set your desired button color */
+  color: #fff;
+  border: none;
+  padding: 8px 16px;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+}
+
+.logout-button:hover {
+  background-color: #c0392b; /* Change color on hover */
+}
 @media (min-width: 768px){
 .container, .container-md, .container-sm {
     max-width: 1200px;
