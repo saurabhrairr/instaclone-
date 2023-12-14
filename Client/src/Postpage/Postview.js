@@ -188,7 +188,7 @@ const Postview = () => {
   };
 
   return (
-    <div className="container1">
+    <div className="container4">
       <div></div>
       <div>
         {data.map((users, i) => {
@@ -213,8 +213,10 @@ const Postview = () => {
 
 
       {posts.map((item, i) => {
+          const postHeight = 590 + item.comments.length * 20; 
         return (
-          <div className="Post" key={i}>
+          <div className="Post" key={i} style={{ height: `${postHeight}px` }}>
+
             <div className="user-information">
               <b className="name">{item.name}</b>
               <p>{item.location}</p>
