@@ -36,26 +36,46 @@ mongoose.connect("mongodb://localhost/instcomment", (err) => {
 });
 
 // Signup Route
+// Signup Route
 app.post("/signup", async (req, res) => {
   try {
-    console.log("Received signup request");
     const { email, password } = req.body;
+    const existingUser = await UserModel.findOne({ email });
 
+    if (existingUser) {
+      return res.status(400).json({ error: "User with this email already exists" });
+    }
 
-    // Hash the password
     const hashedPassword = await bcrypt.hash(password, 10);
-
-    // Create a new user
     const newUser = {
       email,
       password: hashedPassword,
     };
 
-    // Save the user to the database
     const savedUser = await UserModel.create(newUser);
 
     res.status(201).json({ message: "Signup successful", user: savedUser });
   } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: "Internal Server Error" });
+  }
+});
+
+
+
+
+app.post("/checkUser", async (req, res) => {
+  try {
+    const { email } = req.body;
+    const existingUser = await UserModel.findOne({ email });
+
+    if (existingUser) {
+      return res.status(400).json({ error: "User with this email already exists" });
+    }
+
+    res.status(200).json({ isUserRegistered: false });
+  } catch (error) {
+    console.error("Error checking user:", error);
     res.status(500).json({ error: "Internal Server Error" });
   }
 });
