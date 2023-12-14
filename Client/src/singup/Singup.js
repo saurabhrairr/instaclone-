@@ -2,15 +2,17 @@
 
 import React, { useState } from 'react';
 import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate,useLocation  } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import './Singup.css'; // Custom styles
 import 'bootstrap/dist/css/bootstrap.min.css'; // Bootstrap styles
+
 
 const Signup = () => {
   const navigate = useNavigate();
   const [email, setemail] = useState('');
   const [password, setPassword] = useState('');
+  const location = useLocation();
 
   const handleSignup = async () => {
 
@@ -51,8 +53,12 @@ const Signup = () => {
     }
   };
 
+  const isSignupPage = location.pathname === '/signup';
+
   return (
-    <div className="container d-flex justify-content-center align-items-center vh-100">
+    <div
+      className={`container1 d-flex justify-content-center align-items-center vh-100 ${isSignupPage ? 'signup-page' : ''}`}
+    >
       <div className="form">
         <h2 className="mb-4">Signup</h2>
         <div className="mb-3">

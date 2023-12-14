@@ -1,0 +1,33 @@
+/* login.css */
+
+.container2 {
+       display: flex;
+       flex-direction: column;
+       align-items: center;
+       justify-content: center;
+       height: 100%;
+       width: 100%;
+     }
+     
+     .login-page {
+       background-image: url('../assest/vecteezy_fingerprint-identity-sensor-data-protection-system-podium_7164537.jpg');
+       background-size: cover;
+       background-position: center;
+       background-repeat: no-repeat;
+     }
+     
+     .form {
+       width: 300px;
+       padding: 20px;
+       border: 1px solid #a41313;
+       border-radius: 5px;
+       box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+     }
+  
+
+.mb-4 {
+    color: #ffff;
+}
+.mt-3{
+       color: #ffff;  
+}

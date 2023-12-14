@@ -1,19 +1,24 @@
-
-
-.container {
+.container1 {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 100vh; /* This will make the container take the full height of the viewport */
+  height: 100%;
+  width: 100%;
+
+}
+
+.signup-page {
+  background-image: url('../assest/Fluid_background_2019_3-1-34.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat; /* Use 'no-repeat' instead of 'repeat' */
 }
 
 .form {
-  width: 300px; /* Adjust the width as needed */
+  width: 300px;
   padding: 20px;
   border: 1px solid #ccc;
   border-radius: 5px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
-
-/* Add any other styling you want for labels, inputs, and buttons */

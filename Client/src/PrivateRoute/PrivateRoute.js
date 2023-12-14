@@ -8,23 +8,22 @@ const PrivateRoute = ({ postId, user, onCommentAdded }) => {
     e.preventDefault();
 
     try {
-      // Make a POST request to the server endpoint
+   
       const response = await axios.post(`/addComment/${postId}`, {
         text: commentText,
       }, {
         headers: {
-          Authorization: user.token, // Pass the user's token for authentication
+          Authorization: user.token, 
         },
       });
 
-      // If the comment is added successfully, update the UI or trigger any necessary actions
+    
       if (response.data) {
         onCommentAdded(response.data);
-        // You may want to reset the commentText state or close the comment form here
+       
         setCommentText('');
       }
     } catch (error) {
-      // Handle errors, e.g., display an error message to the user
       console.error('Error adding comment:', error.message);
     }
   };

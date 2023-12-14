@@ -178,6 +178,11 @@ app.put("/updatePost/:postId", async (req, res) => {
 
 
 
+
+
+
+
+
 app.delete("/deletePost/:postId", async (req, res) => {
   try {
     const postId = req.params.postId;

@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import Swal from "sweetalert2";
 import icon from "../assest/icon.jpg";
 import "./landingpage.css";
 
@@ -11,15 +12,19 @@ const Landingpage = () => {
     if (userName.trim() !== "") {
       setEntered(true);
     } else {
-      alert("Please enter your name before proceeding.");
+      // Replace the alert with SweetAlert
+      Swal.fire({
+        icon: 'error',
+        title: 'Error',
+        text: 'Please enter your name before proceeding.',
+      });
     }
   };
 
   return (
     <>
       <div className="main">
-    
-        <img src={icon} alt="10xteamenterimage" />
+        <img className="landinpageimg"  src={icon} alt="10xteamenterimage" />
         <div className="second">
           <ul>
             <p>Welcome !</p>

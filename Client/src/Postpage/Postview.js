@@ -104,9 +104,12 @@ const Postview = () => {
   };
 
   const handleLogout = () => {
+    // Clear token from local storage
+    localStorage.removeItem("token");
+    setLikedPosts([]);
+    // Navigate to the home route
     navigate("/");
   };
-
   const handleCommentSubmit = async (postId) => {
     try {
       const token = localStorage.getItem("jwtToken");

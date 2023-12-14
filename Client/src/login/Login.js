@@ -2,17 +2,18 @@
 
 import React, { useState } from 'react';
 import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate,useLocation } from 'react-router-dom';
 import Swal from 'sweetalert2';
-import '../singup/Singup.css'; // Custom styles
+
 import 'bootstrap/dist/css/bootstrap.min.css'; // Bootstrap styles
+import "./login.css";
 
 
 const Login = ({ setToken }) => {
   const navigate = useNavigate();
   const [email, setemail] = useState('');
   const [password, setPassword] = useState('');
-
+  const location = useLocation();
 
   const handleLogin = async () => {
     try {
@@ -48,9 +49,11 @@ const Login = ({ setToken }) => {
       });
     }
   };
-
+  const isLoginpage= location.pathname === '/';
   return (
-    <div className="container d-flex justify-content-center align-items-center vh-100">
+    <div
+      className={`container2 d-flex justify-content-center align-items-center vh-100 ${isLoginpage ? 'login-page' : ''}`}
+    >
       <div className="form">
         <h2 className="mb-4">Login</h2>
         <div className="mb-3">
@@ -77,7 +80,7 @@ const Login = ({ setToken }) => {
             onChange={(e) => setPassword(e.target.value)}
           />
         </div>
-        <button className="btn btn-primary" onClick={handleLogin}>
+        <button className="btn btn-primary colochange" onClick={handleLogin}>
           Login
         </button>
         <p className="mt-3">

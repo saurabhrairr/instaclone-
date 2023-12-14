@@ -1,13 +1,18 @@
 
+
 .main {
-       display: flex;
-       justify-content: center;
-       padding-top: 10%;
-     }
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; /* Set the height to 100% of the viewport height */
+  background-color: aquamarine;
+   border-radius: 10px;
+}
      
-     img {
+.landinpageimg    {
        max-width: 100%;
        height: auto;
+       border-radius: 30px;
      }
      
      .second {
