@@ -28,17 +28,19 @@ body {
   padding: 20px;
   background-color: white;
   z-index: 999;
-  /* Add other styles for your modal */
+
 }
 
 .Post {
   margin: 10px;
-  border: 1px solid black;
+  border: 1px solid rgb(88, 51, 181);
   margin-left: 500px;
   margin-right: 528px;
   height: 590px;
   width: 471px;
   background-color: aquamarine;
+  border-radius: 15px
+  
 }
 .user-information {
   display: block;

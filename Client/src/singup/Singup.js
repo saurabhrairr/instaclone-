@@ -15,8 +15,8 @@ const Signup = () => {
   const location = useLocation();
 
   const handleSignup = async () => {
-
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    
     if (!emailRegex.test(email)) {
       Swal.fire({
         icon: 'error',
@@ -25,25 +25,40 @@ const Signup = () => {
       });
       return;
     }
+  
     try {
+      // Check if the user is already registered
+      const checkUserResponse = await axios.post('http://localhost:3082/checkUser', { email });
+  
+      if (checkUserResponse.data.isUserRegistered) {
+        // User is already registered
+        Swal.fire({
+          icon: 'warning',
+          title: 'Already Registered',
+          text: 'This email address is already registered. Please log in.',
+        });
+        navigate('/'); // You might want to navigate to the login page here
+        return;
+      }
+  
       // Make a request to your signup endpoint
-      const response = await axios.post('http://localhost:3082/signup', {
+      const signupResponse = await axios.post('http://localhost:3082/signup', {
         email,
         password,
       });
-
+  
       // Show SweetAlert success message
       Swal.fire({
         icon: 'success',
         title: 'Signup Successful!',
         text: 'You have successfully signed up. Please log in.',
       });
-
+  
       // Navigate to the login page after successful signup
       navigate('/');
     } catch (error) {
       console.error('Signup failed', error.response?.data?.error || 'Internal Server Error');
-
+  
       // Show SweetAlert error message
       Swal.fire({
         icon: 'error',
@@ -52,6 +67,7 @@ const Signup = () => {
       });
     }
   };
+  
 
   const isSignupPage = location.pathname === '/signup';
 
