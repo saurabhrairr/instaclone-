@@ -6,6 +6,8 @@ const UserModel = require("./model/userschema");
 const cors = require("cors");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
+require('dotenv').config();
+
 //midaleware
 app.use(express.json({ limit: "30mb", extended: true }));
 app.use(express.urlencoded({ extended: false }));
@@ -27,7 +29,7 @@ app.listen(process.env.PORT || 3082, (err) => {
   }
 });
 
-mongoose.connect("mongodb://localhost/instcomment", (err) => {
+mongoose.connect(process.env.db, { useNewUrlParser: true, useUnifiedTopology: true }, (err) => {
   if (!err) {
     console.log("connected to Database");
   } else {
