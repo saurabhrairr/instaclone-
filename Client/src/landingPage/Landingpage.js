@@ -38,7 +38,7 @@ const Landingpage = () => {
                   style={{
                     padding: '10px',
                     fontSize: '16px',
-                    borderRadius: '5px',
+                    borderRadius: '10px',
                     border: '1px solid #ccc',
                     marginRight: '10px',
                   }}

@@ -1,67 +1,79 @@
-
-
 .main {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh; /* Set the height to 100% of the viewport height */
+  height: 100vh;
   background-color: aquamarine;
-   border-radius: 10px;
+  border-radius: 10px;
 }
+
+.landinpageimg {
+  max-width: 100%;
+  height: auto;
+  border-radius: 30px;
+}
+
+.second {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
+}
+
+.second ul p {
+  color: blueviolet;
+  font-weight: bolder;
+  font-size: 24px;
+  padding-right: 100px;
+}
+
+.second button {
+  margin-top: 20px;
+  padding: 10px 30px;
+  border-radius: 30px;
+  color: blueviolet;
+  border: 1px solid blueviolet;
+  font-size: 18px;
+}
+
+@media (max-width: 768px) {
+  .main {
+    flex-direction: column; 
+  }
+
+  .landinpageimg {
+    border-radius: 0;
+    max-width: 80%; 
+    margin-bottom: 20px; 
+  }
+
+  .second button {
+    width: 100%; 
+  }
+
+  .second ul p {
+    font-size: 20px;
+    padding-right: 64px;
+  }
+
+  .second button {
+    font-size: 16px;
+    padding-right: 52px;
+    width: 245px;
+    margin-right: 18px;
+  
+  }
+}
+
      
-.landinpageimg    {
-       max-width: 100%;
-       height: auto;
-       border-radius: 30px;
-     }
-     
-     .second {
-       display: flex;
-       justify-content: center;
-       align-items: center;
-       flex-direction: column; /* Center the content vertically */
-       text-align: center; /* Center the text */
-     }
-     
-     .second ul p {
-       color: blueviolet;
-       font-weight: bolder;
-       font-size: 24px; /* Increase the font size for larger screens */
-     }
-     
-     .second button {
-       margin-top: 20px; /* Add some space between the paragraph and the button */
-       padding: 10px 30px;
-       border-radius: 30px;
-       color: blueviolet;
-       border: 1px solid blueviolet;
-       font-size: 18px; /* Increase the button font size for larger screens */
-     }
-     
-     /* Responsive styles */
-     /* For screen sizes up to 768px (e.g., smartphones) */
-     @media (max-width: 768px) {
-       .main {
-         padding-top: 20%;
-       }
-     
-       .second ul p {
-         font-size: 20px;
-       }
-     
-       .second button {
-         font-size: 16px;
-       }
-     }
-     
-     /* For screen sizes between 768px and 1024px (e.g., tablets) */
+ 
      @media (min-width: 768px) and (max-width: 1024px) {
-       .main {
-         padding-top: 15%;
-       }
+    
      
        .second ul p {
          font-size: 22px;
+      
        }
      
        .second button {
