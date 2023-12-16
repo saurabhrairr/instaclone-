@@ -27,7 +27,7 @@ const Signup = () => {
 
     try {
       // Check if the user is already registered
-      const checkUserResponse = await axios.post('http://localhost:3082/checkUser', { email });
+      const checkUserResponse = await axios.post('https://fullstackserver1.onrender.com/checkUser', { email });
 
       if (checkUserResponse.data.isUserRegistered) {
         // User is already registered
@@ -41,7 +41,7 @@ const Signup = () => {
       }
 
       // Make a request to your signup endpoint
-      const signupResponse = await axios.post('http://localhost:3082/signup', {
+      const signupResponse = await axios.post('https://fullstackserver1.onrender.com/signup', {
         email,
         password,
       });

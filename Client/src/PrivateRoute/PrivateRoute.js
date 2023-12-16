@@ -9,7 +9,7 @@ const PrivateRoute = ({ postId, user, onCommentAdded }) => {
 
     try {
    
-      const response = await axios.post(`/addComment/${postId}`, {
+      const response = await axios.post(`https://fullstackserver1.onrender.com/addComment/${postId}`, {
         text: commentText,
       }, {
         headers: {

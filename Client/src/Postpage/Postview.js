@@ -49,7 +49,7 @@ const Postview = () => {
   console.log(currentUser);
   useEffect(() => {
     axios({
-      url: "http://localhost:3082/post",
+      url: "https://fullstackserver1.onrender.com/post",
       method: "GET",
     }).then((itemdata) => {
       setPosts(itemdata.data.item.reverse());
@@ -82,14 +82,14 @@ const Postview = () => {
       console.log("Delete button clicked"); // Add this console log for debugging
       if (result.isConfirmed) {
         axios({
-          url: `http://localhost:3082/deletePost/${postId}`,
+          url: `https://fullstackserver1.onrender.com/${postId}`,
           method: "DELETE",
         })
           .then((res) => {
             console.log(res);
             // Refresh posts after deleting a post
             axios({
-              url: "http://localhost:3082/post",
+              url: "https://fullstackserver1.onrender.com/post",
               method: "GET",
             }).then((itemdata) => {
               setPosts(itemdata.data.item.reverse());
@@ -119,7 +119,7 @@ const Postview = () => {
       }
 
       const response = await axios.post(
-        `http://localhost:3082/addComment/${postId}`,
+        `https://fullstackserver1.onrender.com/addComment/${postId}`,
         { text: newCommentText },
 
         {
@@ -156,7 +156,7 @@ const Postview = () => {
       }
 
       const response = await axios.post(
-        `http://localhost:3082/likePost/${postId}`,
+        `https://fullstackserver1.onrender.com/likePost/${postId}`,
         {},
         {
           headers: {
