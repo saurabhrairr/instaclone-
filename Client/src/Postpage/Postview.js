@@ -14,9 +14,7 @@ import twitter_social_icon from "../assest/twitter_social_icon.png";
 import share from "../assest/share.png";
 import edit from "../assest/edit.png";
 import deletepost from "../assest/delete.png";
-
-
-
+import heart from "../assest/211754_heart_icon.png";
 import {
   FacebookShareButton,
   TwitterShareButton,
@@ -38,7 +36,7 @@ const Postview = () => {
   const [newCommentText, setNewCommentText] = useState("");
   const [likedPosts, setLikedPosts] = useState([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
-
+  const [isModalOpen1, setIsModalOpen1] = useState(false);
   const shareUrl = window.location.href; // URL to share
   const title = "Check out this post";
 
@@ -141,10 +139,14 @@ const Postview = () => {
     }
   };
 
+  const handleToggleModal = () => {
+    setIsModalOpen(!isModalOpen);
+  };
+
   const handleLikePost = async (postId) => {
     try {
       const token = localStorage.getItem("jwtToken");
-      if (!token) {
+      if (!token ) {
         console.error("User unauthorized. Please log in.");
         return;
       }
@@ -187,6 +189,15 @@ const Postview = () => {
     setIsModalOpen(false);
   };
 
+
+  const openModal1 = () => {
+    setIsModalOpen1(true);
+  };
+
+  const closeModal1 = () => {
+    setIsModalOpen1(false);
+  };
+
   return (
     <div className="container4">
       <div></div>
@@ -196,27 +207,24 @@ const Postview = () => {
         })}
       </div>
       <header className="header-container">
-  <div className="nav">
-    <img className="logo" src={insta} alt="logoimage" />
-    <img
-      id="lobo"
-      className="camera-icon"
-      onClick={formpage}
-      src={camera}
-      alt="camera-image"
-    />
-    <button className="logout-button" onClick={handleLogout}>
-      Logout
-    </button>
-  </div>
-</header>
-
+        <div className="nav">
+          <img className="logo" src={insta} alt="logoimage" />
+          <img
+            id="lobo"
+            className="camera-icon"
+            onClick={formpage}
+            src={camera}
+            alt="camera-image"
+          />
+          <button className="logout-button" onClick={handleLogout}>
+            Logout
+          </button>
+        </div>
+      </header>
 
       {posts.map((item, i) => {
-          const postHeight = 590 + item.comments.length * 20; 
         return (
-          <div className="Post" key={i} style={{ height: `${postHeight}px` }}>
-
+          <div className="Post" key={i} >
             <div className="user-information">
               <b className="name">{item.name}</b>
               <p>{item.location}</p>
@@ -224,23 +232,19 @@ const Postview = () => {
 
             <div className="dots">
               <img
-              src={edit}
-              alt=" currently no detail"
-              className="paper-plane"
-              style={{ cursor: "pointer" }}
+                src={edit}
+                alt=" currently no detail"
+                className="paper-plane"
+                style={{ cursor: "pointer" }}
                 onClick={() => handleUpdateClick(item._id)}
-              >
-             
-              </img>
+              ></img>
               <img
                 src={deletepost}
                 alt=" currently no detail"
                 className="paper-plane"
                 onClick={() => handleDeletePost(item._id)}
                 style={{ cursor: "pointer" }}
-              >
-            
-              </img>
+              ></img>
             </div>
 
             <div className="user-image">
@@ -249,18 +253,15 @@ const Postview = () => {
 
             <div className="data">
               <span>
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 24 24"
+                <img
+                  src={heart}
                   className={`heart-img ${
                     likedPosts.includes(item._id) ? "liked" : ""
                   }`}
                   onClick={() => handleLikePost(item._id)}
-                >
-                  <path d="M12 21.35l-1.45-1.32C5.4 14.25 2 11.25 2 7.5 2 4.42 4.42 2 7.5 2c1.74 0 3.41.81 4.5 2.09C16.09 2.81 17.76 2 19.5 2 22.58 2 25 4.42 25 7.5c0 3.75-3.4 6.75-8.55 12.54L12 21.35z" />
-                </svg>
+                />
               </span>
-              <span onClick={openModal}>
+              <span onClick={openModal1}>
                 <img
                   src={share}
                   alt=" currently no detail"
@@ -274,102 +275,125 @@ const Postview = () => {
             </div>
             <footer className="footer">
               <p> {item.descripation}</p>
+
               <div className="comment-section">
-                <div className="comment-box">
-                  {(item.comments || []).map((comment, index) => (
-                    <div key={index} className="single-comment">
-                      <p className="comment-text">
-                        <span className="comment-email">
-                          {comment.email.split('@')[0]}{' '}
-                        </span>
-                        {comment.text}
-                      </p>
-                    </div>
-                  ))}
-                </div>
                 {/* Add Comment Input */}
-                <div className="comment-input">
-                  <input
-                    type="text"
-                    placeholder="Add a comment"
-                    value={newCommentText}
-                    onChange={(e) => setNewCommentText(e.target.value)}
-                  />
-                  <button onClick={() => handleCommentSubmit(item._id)}>
-                    Add Comment
-                  </button>
-                </div>
+
+                <button onClick={handleToggleModal}>add Comment </button>
+
+                <Modal
+                  isOpen={isModalOpen}
+                  onRequestClose={handleToggleModal}
+                  contentLabel="Comments Modal"
+                  style={{
+                    overlay: {
+                      backgroundColor: "rgba(0, 0, 0, 0.5)", // Background color behind the modal
+                    },
+                    content: {
+                      width: "500px",
+                      height: "400px",
+                      margin: "auto",
+                      marginTop: "100px",
+                      borderRadius: "8px",
+                      outline: "none",
+                      padding: "20px",
+                      boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
+                    },
+                  }}
+                >
+                  <h2>Comments</h2>
+                  <div className="comment-box">
+                    {(item.comments || []).map((comment, index) => (
+                      <div key={index} className="single-comment">
+                        <p className="comment-text">
+                          <span className="comment-email">
+                            {comment.email.split("@")[0]}{" "}
+                          </span>
+                          {comment.text}
+                        </p>
+                      </div>
+                    ))}
+                  </div>
+                  <div className="comment-input">
+                    <input
+                      type="text"
+                      placeholder="Add a comment"
+                      value={newCommentText}
+                      onChange={(e) => setNewCommentText(e.target.value)}
+                    />
+                    <button onClick={() => handleCommentSubmit(item._id)}>
+                      Add Comment
+                    </button>
+                  </div>
+                </Modal>
               </div>
             </footer>
           </div>
         );
       })}
 
-<Modal
-  isOpen={isModalOpen}
-  onRequestClose={closeModal}
-  style={{
-    overlay: {
-      backgroundColor: 'rgba(0, 0, 0, 0.5)', // Background color behind the modal
-    },
-    content: {
-      width: '300px', 
-      height: '300px', 
-      margin: 'auto', 
-      marginTop: '100px', 
-      borderRadius: '8px', 
-      outline: 'none',
-      padding: '20px', 
-      boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)',
-    },
-  }}
->
-  <div>
-    <FacebookShareButton url={shareUrl} quote={title}>
-      <img
-        src={facebook}/* Replace with the actual path */
-        alt="Facebooka"
-        style={{ width: '30px', height: '30px', marginRight: '10px' }}
-      />
-    </FacebookShareButton>
+      <Modal
+        isOpen={isModalOpen1}
+        onRequestClose={closeModal1}
+        style={{
+          overlay: {
+            backgroundColor: "rgba(0, 0, 0, 0.5)", // Background color behind the modal
+          },
+          content: {
+            width: "300px",
+            height: "300px",
+            margin: "auto",
+            marginTop: "100px",
+            borderRadius: "8px",
+            outline: "none",
+            padding: "20px",
+            boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
+          },
+        }}
+      >
+        <div>
+          <FacebookShareButton url={shareUrl} quote={title}>
+            <img
+              src={facebook} /* Replace with the actual path */
+              alt="Facebooka"
+              style={{ width: "30px", height: "30px", marginRight: "10px" }}
+            />
+          </FacebookShareButton>
 
-    <TwitterShareButton url={shareUrl} title={title}>
-      <img
-        src={twitter_social_icon}
-        alt="Twitter"
-        style={{ width: '30px', height: '30px', marginRight: '10px' }}
-      />
-    </TwitterShareButton>
+          <TwitterShareButton url={shareUrl} title={title}>
+            <img
+              src={twitter_social_icon}
+              alt="Twitter"
+              style={{ width: "30px", height: "30px", marginRight: "10px" }}
+            />
+          </TwitterShareButton>
 
-    <WhatsappShareButton url={shareUrl} title={title}>
-      <img
-        src={ whatsapp_icon}
-        alt="WhatsApp"
-        style={{ width: '30px', height: '30px' }}
-      />
-    </WhatsappShareButton>
-  </div>
-  {/* Add other social media share buttons here */}
-  <button onClick={closeModal}>Close</button>
-</Modal>
+          <WhatsappShareButton url={shareUrl} title={title}>
+            <img
+              src={whatsapp_icon}
+              alt="WhatsApp"
+              style={{ width: "30px", height: "30px" }}
+            />
+          </WhatsappShareButton>
+        </div>
+        {/* Add other social media share buttons here */}
+        <button onClick={closeModal1}>Close</button>
+      </Modal>
 
-
-
-
-{showUpdateModal && (
-  <UpdatePostModal
-    postId={selectedPostId}
-    onClose={handleCloseUpdateModal}
-    onUpdate={() => {
-      axios({
-        url: "http://localhost:3082/post",
-        method: "GET",
-      }).then((itemdata) => {
-        setPosts(itemdata.data.item.reverse());
-      });
-    }}
-  />
-)}
+      {showUpdateModal && (
+        <UpdatePostModal
+          postId={selectedPostId}
+          onClose={handleCloseUpdateModal}
+          onUpdate={() => {
+            axios({
+              url: "http://localhost:3082/post",
+              method: "GET",
+            }).then((itemdata) => {
+              setPosts(itemdata.data.item.reverse());
+            });
+          }}
+        />
+      )}
     </div>
   );
 };
