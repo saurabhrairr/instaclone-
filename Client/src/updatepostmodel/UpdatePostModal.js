@@ -24,7 +24,7 @@ const UpdatePostModal = ({ onClose, postId, onUpdate }) => {
 
   const handleUpdate = () => {
     axios({
-      url: `https://fullstackserver1.onrender.com/updatePost/${postId}`,
+      url: `https://fullstackserver.onrender.com/updatePost/${postId}`,
       method: "PUT",
       data: updatedData,
     })

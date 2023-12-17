@@ -17,7 +17,7 @@ const Login = ({ setToken }) => {
 
   const handleLogin = async () => {
     try {
-      const response = await axios.post('https://fullstackserver1.onrender.com/login', {
+      const response = await axios.post('https://fullstackserver.onrender.com/login', {
         email,
         password,
       });

@@ -26,7 +26,7 @@ const Form = () => {
     }
 
     axios({
-      url: 'https://fullstackserver1.onrender.com/post',
+      url: 'https://fullstackserver.onrender.com/post',
       method: 'POST',
       headers: {},
       data: {

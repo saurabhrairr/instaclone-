@@ -8,6 +8,7 @@ import Form from "./form/Form";
 import Userdata from "./Userdata";
 import PrivateRoute from "./PrivateRoute/PrivateRoute";
 import Protected from "./protected-route/protected";
+import Commenttest from "./Commenttest";
 
 const App = () => {
   // Load token from localStorage on component mount
@@ -30,7 +31,7 @@ const App = () => {
           <Route path="/Landingpage" element={<Landingpage />} />
           <Route path="/Postview" element={<Protected><Postview/></Protected>}></Route>
           <Route path="/form" element={<Form />} />
-
+          <Route path="/Commenttest" element={<Commenttest />} />
           {/* Authentication Routes */}
           <Route
             path="/"
